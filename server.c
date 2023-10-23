@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 18:26:12 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/24 05:54:39 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/10/24 06:17:24 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <unistd.h>
-
-
-//#define
-
-#endif
+int	main(void)
+{
+	while (1);
+	return (0);
+}

@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/23 18:26:12 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/24 05:54:39 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/10/24 06:17:51 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/10/24 06:19:25 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <signal.h>
-#include <unistd.h>
-
-
-//#define
-
-#endif
+int	main(int ac, char **av)
+{
+	(void)ac;
+	kill((pid_t)atoi(av[1]), SIGSEGV);
+	return (0);
+}
