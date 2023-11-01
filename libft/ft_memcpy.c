@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/25 17:45:34 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/05/21 04:32:46 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/06/10 07:57:29 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	while (1);
+	size_t			i;
+	unsigned char	*dest;
+	unsigned char	*source;
+
+	if (dst == NULL && src == NULL)
+		return (NULL);
+	i = 0;
+	dest = (unsigned char *)dst;
+	source = (unsigned char *)src;
+	while (i < n)
 	{
-		
+		dest[i] = source[i];
+		i++;
 	}
-	write(1, "hello\n", 6);
-	return (0);
+	return (dst);
 }

@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/25 17:45:34 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/06/01 00:24:01 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/06/09 05:10:47 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+t_list	*ft_lstnew(void *content)
 {
-	while (1);
-	{
-		
-	}
-	write(1, "hello\n", 6);
-	return (0);
+	t_list	*nd;
+
+	nd = (t_list *)malloc(sizeof(t_list));
+	if (!nd)
+		return (NULL);
+	nd->content = content;
+	nd->next = NULL;
+	return (nd);
 }
+
+//int	main(void)
+//{
+//	t_list *lst = NULL;
+
+//	/* ptr to char */
+//	char *str = "hello world";
+//	lst = ft_lstnew(str);
+
+//	int val = 100;
+//	lst = ft_lstnew(&val);
+//}

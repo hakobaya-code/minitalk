@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/25 17:45:34 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/05/26 18:27:10 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/05/27 18:01:05 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+size_t	ft_strlen(const char *s)
 {
-	while (1);
-	{
-		
-	}
-	write(1, "hello\n", 6);
-	return (0);
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = (char *)s;
+	while (s[i] != '\0')
+		i++;
+	return ((size_t) i);
 }
+
+//#include <stdio.h>
+
+//int	main(void)
+//{
+//	size_t length;
+//	char *a = "dfghjk";
+
+//	length = ft_strlen(a);
+//	printf("%zu\n", length);
+//}

@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/25 17:45:34 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/06/09 05:12:41 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/06/10 06:46:14 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	while (1);
-	{
-		
-	}
-	write(1, "hello\n", 6);
-	return (0);
+	if (lst == NULL || new == NULL)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }
+
+//int	main(void)
+//{
+//	t_list	**lst;
+//	t_list	*new;
+
+//	ft_lstadd_front(lst, new);
+//}

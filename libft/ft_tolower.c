@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/25 17:45:34 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/05/24 03:53:25 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/05/27 18:01:26 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_tolower(int c)
 {
-	while (1);
-	{
-		
-	}
-	write(1, "hello\n", 6);
-	return (0);
+	if (c >= 65 && c <= 90)
+		c += 32;
+	return (c);
 }

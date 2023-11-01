@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/25 17:45:34 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/05/31 23:48:36 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/06/01 00:10:30 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+void	ft_putnbr_fd(int n, int fd)
 {
-	while (1);
+	long	num;
+	long	rem;
+	char	minus;
+
+	num = (long)n;
+	minus = '-';
+	if (num < 0)
 	{
-		
+		write(fd, &minus, 1);
+		num *= -1;
 	}
-	write(1, "hello\n", 6);
-	return (0);
+	rem = num % 10;
+	if (num / 10 != 0)
+		ft_putnbr_fd(num / 10, fd);
+	rem = rem + '0';
+	write(fd, &rem, 1);
 }
+
+//int	main(void)
+//{
+//	ft_putnbr_fd(-12345, 1);
+//}

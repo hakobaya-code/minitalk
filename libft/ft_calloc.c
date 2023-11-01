@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/25 17:45:34 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/05/27 17:10:16 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/06/03 23:28:57 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+void	*ft_calloc(size_t count, size_t size)
 {
-	while (1);
+	char	*get;
+	size_t	i;
+	size_t	sum;
+
+	i = 0;
+	sum = count * size;
+	if (size != 0 && count >= SIZE_T_MAX / size)
+		return (NULL);
+	get = (char *)malloc(sizeof(char) * sum);
+	if (!get)
+		return (NULL);
+	while (sum > 0)
 	{
-		
+		get[i] = 0;
+		i++;
+		sum--;
 	}
-	write(1, "hello\n", 6);
-	return (0);
+	return (get);
 }

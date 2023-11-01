@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/10/25 17:45:34 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/05/16 22:30:39 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/05/28 02:55:54 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "libft.h"
 
-int	main(void)
+int	ft_isascii(int c)
 {
-	while (1);
-	{
-		
-	}
-	write(1, "hello\n", 6);
+	if (c >= 0 && c <= 127)
+		return (1);
 	return (0);
 }
+
+//int	main(void)
+//{
+//	int	a;
+
+//	a = isascii('>');
+//	printf("%d\n", a);
+//}
