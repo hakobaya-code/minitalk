@@ -6,7 +6,7 @@
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 06:17:51 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/11/01 18:48:31 by hakobaya         ###   ########.fr       */
+/*   Updated: 2023/11/05 19:46:27 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	send_char(const pid_t pid, char c)
 	{
 		if (1 & (c >> digit))
 			kill(pid, SIGUSR1);
-		else
+		else if (0 & (c >> digit))
 			kill(pid, SIGUSR2);
 		digit--;
 		usleep(50);
@@ -40,8 +40,10 @@ void	send_char(const pid_t pid, char c)
 
 void	send_string(const pid_t pid, char *str)
 {
+	printf("%s\n", "2");
 	while (*str)
 	{
+		printf("%s\n", "2");
 		send_char(pid, *str);
 		str++;
 	}
@@ -52,8 +54,10 @@ int	main(int ac, char **av)
 	pid_t	pid;
 	//(void)ac;
 
-	pid = (pid_t)ft_atoi(av[1]); //av[0]はなに？av[1]はPID, av[2]はコマンドライン引数の文字たち
-	write(1, "ohayo", 5);
-	kill(pid, av[2]); //SIGUSR1, SIGUSR2にする
+	pid = (pid_t)atoi(av[1]);
+	printf("%s\n", "1");
+	send_string(pid, av[2]);
+	kill(pid, SIGUSR1);
+	kill(pid, SIGUSR2);
 	return (0);
 }
