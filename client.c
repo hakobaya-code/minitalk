@@ -6,58 +6,59 @@
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 06:17:51 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/11/05 19:46:27 by hakobaya         ###   ########.fr       */
+/*   Updated: 2023/11/07 05:32:06 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include "libft/libft.h"
-#include <libc.h>
 
-//void	signal_handler()
-//{
-
-//}
+static int	g_received = 0;
 
 void	send_char(const pid_t pid, char c)
 {
-	unsigned int	digit;
-	char			*bit;
+	int	digit;
 
 	digit = 7;
-	bit = 0b00000000;
-
 	while (digit >= 0)
 	{
+		usleep(100);
 		if (1 & (c >> digit))
 			kill(pid, SIGUSR1);
-		else if (0 & (c >> digit))
+		else
 			kill(pid, SIGUSR2);
 		digit--;
-		usleep(50);
 	}
+	if (g_received == 1)
+		g_received = 0;
 }
 
 void	send_string(const pid_t pid, char *str)
 {
-	printf("%s\n", "2");
 	while (*str)
 	{
-		printf("%s\n", "2");
 		send_char(pid, *str);
 		str++;
 	}
 }
 
+void	signal_handler(int signum, siginfo_t *info, void *context)
+{
+	(void)info;
+	(void)context;
+	if (signum == SIGUSR1)
+		g_received = 1;
+}
+
 int	main(int ac, char **av)
 {
 	pid_t	pid;
-	//(void)ac;
 
-	pid = (pid_t)atoi(av[1]);
-	printf("%s\n", "1");
+	if (ac != 3)
+		exit(0);
+	(void)ac;
+	pid = (pid_t)ft_atoi(av[1]);
+	if (pid < 100 || pid > 99998)
+		exit(0);
 	send_string(pid, av[2]);
-	kill(pid, SIGUSR1);
-	kill(pid, SIGUSR2);
 	return (0);
 }

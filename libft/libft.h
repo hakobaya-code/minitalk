@@ -6,7 +6,7 @@
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 04:49:59 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/06/10 08:10:06 by hakobaya         ###   ########.fr       */
+/*   Updated: 2023/11/06 23:14:01 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,5 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	ft_putnbr_fd(int n, int fd);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
 
 #endif

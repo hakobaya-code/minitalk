@@ -1,36 +1,43 @@
 NAME = minitalk
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-
-SERVER_SRCS = server.C
-SERVER_OBJS = $(SERVER_SRCS:.c=.o)
-SERVER_NAME =server
-
-CLIENT_SRCS = client.c
+CLIENT = client
+SERVER = server
 CLIENT_OBJS = $(CLIENT_SRCS:.c=.o)
-CLIENT_NAME = client
+SERVER_OBJS = $(SERVER_SRCS:.c=.o)
+LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
+CLIENT_SRCS = client.c
+SERVER_SRCS = server.c
+LIBFT_DIR = libft
+INCLUDE = -I $(LIBFT_DIR)
 
-all: $(NAME)
+all : $(NAME)
 
-.c.o:
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(NAME) :
+	make -C $(LIBFT_DIR)
+	make $(CLIENT)
+	make $(SERVER)
+
+$(CLIENT) : $(CLIENT_OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) -L $(LIBFT_DIR) -l ft -o $@ $<
+
+$(SERVER) : $(SERVER_OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) -L $(LIBFT_DIR) -l ft -o $@ $<
+
+#$@ はターゲット（今回はclient）
+#$< はコンポーネント（今回は$(OBJS) $(LIBS)）
+
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+#.c.o :
+#	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(SERVER_OBJS) $(CLIENT_OBJS)
+	make clean -C $(LIBFT_DIR)
+	$(RM) $(CLIENT_OBJS) $(CLIENT) $(SERVER_OBJS) $(SERVER)
 
 fclean: clean
-	$(RM) $(SERVER_NAME) $(CLIENT_NAME)
+	$(RM) $(NAME)
 
-re:
-	fclean all
-
-$(NAME) : $(CLIENT_NAME) $(SERVER_NAME)
-
-$(CLIENT_NAME) : $(CLIENT_OBJ) $(LIB)
-	$(CC) $(CFLAGS) $(CLIENT_OBJ) $(LIB_OBJ) -o $(CLIENT_NAME)
-
-$(SERVER_NAME) : $(SERVER_OBJ) $(LIB)
-	$(CC) $(CFALGS) $(SERVER_OBJ) $(LIB) -o $(SERVER_NAME)
-
-$(LIB):
-	$(MAKE) -c ./libft
+re: fclean all
