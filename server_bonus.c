@@ -6,7 +6,7 @@
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 02:06:05 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/11/08 02:06:14 by hakobaya         ###   ########.fr       */
+/*   Updated: 2023/11/08 06:08:02 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	signal_handler(int signum, siginfo_t *info, void *context)
 	{
 		if (signum == SIGUSR1)
 			c = (1 << digit) | c;
-		else
-			c = (0 << digit) | c;
 		if (digit == 0)
 		{
 			write(1, &c, 1);

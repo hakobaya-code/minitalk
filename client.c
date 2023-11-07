@@ -6,7 +6,7 @@
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 06:17:51 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/11/08 02:18:06 by hakobaya         ###   ########.fr       */
+/*   Updated: 2023/11/08 06:04:43 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	send_char(const pid_t pid, char c)
 	g_received = 0;
 	while (digit >= 0)
 	{
-		usleep(50);
+		usleep(200);
 		if (1 & (c >> digit))
 			kill(pid, SIGUSR1);
 		else
@@ -64,13 +64,12 @@ int	main(int ac, char **av)
 
 	if (ac != 3)
 	{
-		ft_putstr_fd("command line 3 only", 1);
+		ft_putstr_fd("Three arguments are valid\n", 1);
 		exit(0);
 	}
-	(void)ac;
 	pid = (const pid_t)ft_atoi(av[1]);
 	if (pid < 100 || pid > 99998)
-		exit(0);
+		exit(1);
 	ft_memset(&act, 0, sizeof(struct sigaction));
 	act.sa_sigaction = signal_handler_client;
 	act.sa_flags = SA_SIGINFO;

@@ -6,41 +6,69 @@
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 20:56:58 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/11/08 01:54:55 by hakobaya         ###   ########.fr       */
+/*   Updated: 2023/11/08 06:04:22 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long long	over(long num, const char *next_c, int minus)
+int	ft_atoi(const char *str)
 {
-	int	next;
+	int			num;
 
-	next = *next_c - '0';
-	if (minus == 1)
+	num = 0;
+	if (!(*str >= '0' && *str <= '9'))
 	{
-		if (LONG_MAX % 10 > next)
-			return (num * 10 + next);
-		else
-			return (LONG_MAX);
+		ft_putstr_fd("PID is invalid\n", 1);
+		return (-1);
 	}
-	else
+	while (*str >= '0' && *str <= '9')
 	{
-		if (LONG_MAX % 10 + 1 > next)
-			return ((num * 10 + next) * -1);
-		else
-			return (LONG_MIN);
+		num = num * 10 + (*str - '0');
+		str++;
+	}
+	if (num < 100 || num > 99998)
+	{
+		ft_putstr_fd("PID is invalid\n", 1);
+		return (-1);
+	}
+	if (*str && !(*str >= '0' && *str <= '9'))
+	{
+		ft_putstr_fd("PID is invalid\n", 1);
+		return (-1);
 	}
 	return (num);
 }
 
-static const char	*skip(const char *str)
-{
-	while (*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r'
-		|| *str == '\t' || *str == '\v')
-		str++;
-	return (str);
-}
+//static long long	over(long num, const char *next_c, int minus)
+//{
+//	int	next;
+
+//	next = *next_c - '0';
+//	if (minus == 1)
+//	{
+//		if (LONG_MAX % 10 > next)
+//			return (num * 10 + next);
+//		else
+//			return (LONG_MAX);
+//	}
+//	else
+//	{
+//		if (LONG_MAX % 10 + 1 > next)
+//			return ((num * 10 + next) * -1);
+//		else
+//			return (LONG_MIN);
+//	}
+//	return (num);
+//}
+
+//static const char	*skip(const char *str)
+//{
+//	while (*str == ' ' || *str == '\f' || *str == '\n' || *str == '\r'
+//		|| *str == '\t' || *str == '\v')
+//		str++;
+//	return (str);
+//}
 
 //int	ft_atoi(const char *str)
 //{
@@ -70,35 +98,6 @@ static const char	*skip(const char *str)
 //	num = num * minus;
 //	return ((int)num);
 //}
-
-int	ft_atoi(const char *str)
-{
-	int			minus;
-	long long	num;
-
-	num = 0;
-	minus = 1;
-	str = skip(str);
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			minus *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		if (num > INT_MAX / 10 && minus == 1)
-			return ((int)LONG_MAX);
-		if (num > INT_MAX / 10)
-			return ((int)LONG_MIN);
-		if (num == INT_MAX / 10)
-			return ((int)over(num, str, minus));
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	num = num * minus;
-	return ((int)num);
-}
 
 //int	main(void)
 //{

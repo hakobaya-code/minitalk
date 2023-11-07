@@ -1,5 +1,5 @@
 NAME = minitalk
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 CLIENT = client
@@ -20,7 +20,9 @@ LIBFT_OBJS = $(LIBFT_SRCS:.c=.o)
 LIBFT_DIR = libft
 INCLUDE = -I $(LIBFT_DIR)
 
-all :
+all : $(NAME)
+
+$(NAME) :
 	make -C $(LIBFT_DIR)
 	make $(CLIENT)
 	make $(SERVER)
