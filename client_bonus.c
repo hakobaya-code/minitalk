@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 06:17:51 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/11/08 02:18:06 by hakobaya         ###   ########.fr       */
+/*   Created: 2023/11/08 02:05:34 by hakobaya          #+#    #+#             */
+/*   Updated: 2023/11/08 02:21:37 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	send_string(const pid_t pid, char *str)
 	{
 		send_char(pid, *str);
 		str++;
+		if (g_received == 1)
+			ft_putstr_fd("received ! \n", 1);
 	}
 }
 
