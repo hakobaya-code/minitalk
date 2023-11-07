@@ -11,9 +11,7 @@ SERVER_SRCS = server.c
 LIBFT_DIR = libft
 INCLUDE = -I $(LIBFT_DIR)
 
-all : $(NAME)
-
-$(NAME) :
+all :
 	make -C $(LIBFT_DIR)
 	make $(CLIENT)
 	make $(SERVER)
@@ -35,9 +33,9 @@ $(SERVER) : $(SERVER_OBJS)
 
 clean:
 	make clean -C $(LIBFT_DIR)
-	$(RM) $(CLIENT_OBJS) $(CLIENT) $(SERVER_OBJS) $(SERVER)
+	$(RM) $(CLIENT_OBJS) $(SERVER_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(CLIENT) $(SERVER)
 
 re: fclean all

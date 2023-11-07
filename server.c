@@ -6,7 +6,7 @@
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 06:03:44 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/11/07 23:25:15 by hakobaya         ###   ########.fr       */
+/*   Updated: 2023/11/07 23:47:36 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	signal_handler(int signum, siginfo_t *info, void *context)
 	static unsigned char	c = 0b00000000;
 
 	(void)context;
-	(void)info;
 	if (signum == SIGUSR1 || signum == SIGUSR2)
 	{
 		if (signum == SIGUSR1)
