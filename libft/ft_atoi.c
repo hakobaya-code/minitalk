@@ -6,13 +6,13 @@
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 20:56:58 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/06/10 08:13:13 by hakobaya         ###   ########.fr       */
+/*   Updated: 2023/11/07 23:15:55 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long long	over(long long num, const char *next_c, int minus)
+static long long	over(long num, const char *next_c, int minus)
 {
 	int	next;
 
@@ -41,6 +41,35 @@ static const char	*skip(const char *str)
 		str++;
 	return (str);
 }
+
+//int	ft_atoi(const char *str)
+//{
+//	int			minus;
+//	long		num;
+
+//	num = 0;
+//	minus = 1;
+//	str = skip(str);
+//	if (*str == '-' || *str == '+')
+//	{
+//		if (*str == '-')
+//			minus *= -1;
+//		str++;
+//	}
+//	while (*str >= '0' && *str <= '9')
+//	{
+//		if (num > INT_MAX / 10 && minus == 1)
+//			return ((int)INT_MAX);
+//		if (num > INT_MAX / 10)
+//			return ((int)INT_MIN);
+//		if (num == INT_MAX / 10)
+//			return ((int)over(num, str, minus));
+//		num = num * 10 + (*str - '0');
+//		str++;
+//	}
+//	num = num * minus;
+//	return ((int)num);
+//}
 
 int	ft_atoi(const char *str)
 {
@@ -84,20 +113,20 @@ int	ft_atoi(const char *str)
 //	str3 = "--++-uyf+-23r90";
 //	str4 = "2147483647";
 //	str5 = "-2147483648";
-//	//printf("%d\n", ft_atoi(str1));
-//	//printf("%d\n", atoi(str1));
+//	printf("%d\n", ft_atoi(str1));
+//	printf("%d\n", atoi(str1));
 //	printf("%d\n", ft_atoi(str2));
 //	printf("%d\n", atoi(str2));
-//	//printf("%d\n", ft_atoi(str3));
-//	//printf("%d\n", atoi(str3));
-//	//printf("%d\n", ft_atoi(str4));
-//	//printf("%d\n", atoi(str4));
-//	//printf("%d\n", ft_atoi(str5));
-//	//printf("%d\n", atoi(str5));
-//	//return (0);
+//	printf("%d\n", ft_atoi(str3));
+//	printf("%d\n", atoi(str3));
+//	printf("%d\n", ft_atoi(str4));
+//	printf("%d\n", atoi(str4));
+//	printf("%d\n", ft_atoi(str5));
+//	printf("%d\n", atoi(str5));
+//	return (0);
 //}
 
-////////		//getconf LONG_MAX
-////////		//LONG_MAX % 10
-////////		// cmp LONG_MAX / 10, num
-////////		// cmp LONG_MAX % 10, (*str - '0')
+//////		//getconf LONG_MAX
+//////		//LONG_MAX % 10
+//////		// cmp LONG_MAX / 10, num
+//////		// cmp LONG_MAX % 10, (*str - '0')
