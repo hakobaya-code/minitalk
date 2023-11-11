@@ -6,7 +6,7 @@
 /*   By: hakobaya <hakobaya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 06:17:51 by hakobaya          #+#    #+#             */
-/*   Updated: 2023/11/08 06:04:43 by hakobaya         ###   ########.fr       */
+/*   Updated: 2023/11/11 18:09:03 by hakobaya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,17 @@
 
 static int	g_received;
 
+void	error_exit(void)
+{
+	ft_putstr_fd("\nERROR : fail to send signal\n", 1);
+	exit(1);
+}
+
 void	send_char(const pid_t pid, char c)
 {
 	int	digit;
 	int	time;
+	int	res;
 
 	digit = 7;
 	time = 5;
@@ -26,18 +33,17 @@ void	send_char(const pid_t pid, char c)
 	{
 		usleep(200);
 		if (1 & (c >> digit))
-			kill(pid, SIGUSR1);
+			res = kill(pid, SIGUSR1);
 		else
-			kill(pid, SIGUSR2);
+			res = kill(pid, SIGUSR2);
+		if (res == -1)
+			error_exit();
 		digit--;
 	}
 	while (g_received == 0 && time <= 10000)
-	{
-		usleep(time);
-		time += 5;
-	}
-	if (time == 10000)
-		exit(1);
+		usleep(time++);
+	if (time >= 10000)
+		error_exit();
 }
 
 void	send_string(const pid_t pid, char *str)
@@ -49,7 +55,7 @@ void	send_string(const pid_t pid, char *str)
 	}
 }
 
-void	signal_handler_client(int signum, siginfo_t *info, void *context)
+void	handler_client(int signum, siginfo_t *info, void *context)
 {
 	(void)info;
 	(void)context;
@@ -71,7 +77,7 @@ int	main(int ac, char **av)
 	if (pid < 100 || pid > 99998)
 		exit(1);
 	ft_memset(&act, 0, sizeof(struct sigaction));
-	act.sa_sigaction = signal_handler_client;
+	act.sa_sigaction = handler_client;
 	act.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &act, NULL);
 	send_string((const pid_t)pid, av[2]);
